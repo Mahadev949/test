@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Course Registration Form</h2>
+  <form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)">
+    
+    <label>Name:</label><br>
+    <input type="text" name="name" [(ngModel)]="user.name" required>
+    <div *ngIf="regForm.submitted && !user.name" style="color:red">
+      Name is required
+    </div>
+    <br>
+
+    <label>Email:</label><br>
+    <input type="text" name="email" [(ngModel)]="user.email" appEmailValidator required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div *ngIf="submitted && regForm.valid">
+    <h3>Submitted Data:</h3>
+    <p><b>Name:</b> {{ user.name }}</p>
+    <p><b>Email:</b> {{ user.email }}</p>
+  </div>
+</div>
